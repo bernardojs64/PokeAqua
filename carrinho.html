@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - PokeAqua Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <img src="/img/Mudkip Happy.jpeg" alt="Mudkip Logo" class="logo">
+                <span class="brand-name">PokeAqua Store</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="produtos.html" class="nav-link">Produtos</a></li>
+                <li><a href="carrinho.html" class="nav-link active">Carrinho</a></li>
+                <li><a href="contato.html" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <h1 class="page-title">Meu Carrinho</h1>
+            
+            <div class="cart-content">
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <img src="/img/Mudkip Happy.jpeg" alt="Pelúcia Mudkip" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3 class="cart-item-name">Pelúcia Mudkip</h3>
+                            <p class="cart-item-description">Pelúcia super fofa do nosso mascote</p>
+                            <div class="cart-item-controls">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn">-</button>
+                                    <span class="quantity">1</span>
+                                    <button class="quantity-btn">+</button>
+                                </div>
+                                <button class="remove-btn">Remover</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-price">
+                            <span class="price">R$ 89,90</span>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <img src="/img/mudkip card.jpeg" alt="Card Mudkip" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3 class="cart-item-name">Card Mudkip Holográfico</h3>
+                            <p class="cart-item-description">Carta holográfica rara do Mudkip</p>
+                            <div class="cart-item-controls">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn">-</button>
+                                    <span class="quantity">2</span>
+                                    <button class="quantity-btn">+</button>
+                                </div>
+                                <button class="remove-btn">Remover</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-price">
+                            <span class="price">R$ 91,80</span>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <img src="/img/elite trainer.jpeg" alt="Booster Pack" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3 class="cart-item-name">Elite Trainer Box Mimikyu</h3>
+                            <p class="cart-item-description">Pacote com 15 cartas aleatórias</p>
+                            <div class="cart-item-controls">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn">-</button>
+                                    <span class="quantity">1</span>
+                                    <button class="quantity-btn">+</button>
+                                </div>
+                                <button class="remove-btn">Remover</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-price">
+                            <span class="price">R$ 244,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h3 class="summary-title">Resumo do Pedido</h3>
+                        <div class="summary-line">
+                            <span>Subtotal:</span>
+                            <span>R$ 426,60</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Frete:</span>
+                            <span>R$ 15,00</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total:</span>
+                            <span>R$ 441,60</span>
+                        </div>
+                        <button class="btn btn-primary btn-full">Finalizar Compra</button>
+                        <a href="produtos.html" class="btn btn-secondary btn-full">Continuar Comprando</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="empty-cart" style="display: none;">
+                <img src="/placeholder.svg?height=200&width=200" alt="Carrinho Vazio" class="empty-cart-image">
+                <h2 class="empty-cart-title">Seu carrinho está vazio</h2>
+                <p class="empty-cart-text">Que tal adicionar alguns produtos incríveis?</p>
+                <a href="produtos.html" class="btn btn-primary">Ver Produtos</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">AquaMon Store</h4>
+                    <p class="footer-text">Sua loja especializada em Pokémons de água</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="carrinho.html">Carrinho</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Contato</h4>
+                    <p class="footer-text">Email: contato@aquamon.com</p>
+                    <p class="footer-text">Telefone: (11) 9999-9999</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AquaMon Store. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
