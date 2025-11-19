@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PokeAqua Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <img src="img/Mudkip Happy.jpeg" class="logo">
+                <span class="brand-name">PokeAqua Store</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container" style="max-width: 450px;">
+            <h1 class="page-title">Entrar</h1>
+
+            <div class="contact-form-container">
+                <form id="loginForm" class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="loginEmail" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Senha</label>
+                        <input type="password" id="loginSenha" class="form-input" required>
+                    </div>
+
+                    <button class="btn btn-primary btn-full">Entrar</button>
+
+                    <p style="text-align:center; margin-top:1rem;">
+                        Não tem conta?
+                        <a href="cadastro.html" style="color:#2980b9;">Criar conta</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="auth.js"></script>
+</html>

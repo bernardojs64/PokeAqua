@@ -1,5 +1,5 @@
 // ============================================
-// POKEAQUA STORE - JAVASCRIPT
+// POKEAQUA STORE - JAVASCRIPT V.02
 // Sistema completo de funcionalidades
 // ============================================
 
