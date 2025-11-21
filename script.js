@@ -37,7 +37,7 @@ class Carrinho {
     // Adicionar produto ao carrinho
     adicionar(produto) {
         const itemExistente = this.itens.find(item => item.id === produto.id);
-        
+
         if (itemExistente) {
             itemExistente.quantidade += 1;
         } else {
@@ -50,7 +50,7 @@ class Carrinho {
                 quantidade: 1
             });
         }
-        
+
         this.salvarCarrinho();
         this.mostrarNotificacao(`${produto.nome} adicionado ao carrinho!`, 'sucesso');
         this.renderizar();
@@ -94,11 +94,11 @@ class Carrinho {
         const subtotal = this.calcularSubtotal();
         const frete = this.calcularFrete();
         let total = subtotal + frete;
-        
+
         if (formaPagamento === 'pix') {
             total = total * (1 - CONFIG.DESCONTO_PIX);
         }
-        
+
         return total;
     }
 
@@ -106,7 +106,7 @@ class Carrinho {
     atualizarContador() {
         const contador = document.querySelector('.cart-count');
         const totalItens = this.itens.reduce((total, item) => total + item.quantidade, 0);
-        
+
         if (contador) {
             contador.textContent = totalItens;
             contador.style.display = totalItens > 0 ? 'flex' : 'none';
@@ -118,19 +118,19 @@ class Carrinho {
         const containerItens = document.querySelector('.cart-items');
         const containerVazio = document.querySelector('.empty-cart');
         const resumo = document.querySelector('.cart-summary');
-        
+
         if (!containerItens) return;
-        
+
         if (this.itens.length === 0) {
             if (containerVazio) containerVazio.style.display = 'block';
             if (resumo) resumo.style.display = 'none';
             containerItens.innerHTML = '';
             return;
         }
-        
+
         if (containerVazio) containerVazio.style.display = 'none';
         if (resumo) resumo.style.display = 'block';
-        
+
         containerItens.innerHTML = this.itens.map(item => `
             <div class="cart-item" data-id="${item.id}">
                 <img src="${item.imagem}" alt="${item.nome}" class="cart-item-image">
@@ -151,7 +151,7 @@ class Carrinho {
                 </div>
             </div>
         `).join('');
-        
+
         this.atualizarResumo();
     }
 
@@ -161,11 +161,11 @@ class Carrinho {
         const frete = this.calcularFrete();
         const formaPagamento = document.querySelector('input[name="pagamento"]:checked')?.value || 'credito';
         const total = this.calcularTotal(formaPagamento);
-        
+
         const subtotalEl = document.querySelector('.summary-line:nth-child(2) span:last-child');
         const freteEl = document.querySelector('.summary-line:nth-child(3) span:last-child');
         const totalEl = document.querySelector('.summary-line.total span:last-child');
-        
+
         if (subtotalEl) subtotalEl.textContent = `R$ ${subtotal.toFixed(2)}`;
         if (freteEl) {
             freteEl.textContent = frete === 0 ? 'GRÁTIS' : `R$ ${frete.toFixed(2)}`;
@@ -179,11 +179,11 @@ class Carrinho {
         const notificacao = document.createElement('div');
         notificacao.className = `notificacao notificacao-${tipo}`;
         notificacao.textContent = mensagem;
-        
+
         document.body.appendChild(notificacao);
-        
+
         setTimeout(() => notificacao.classList.add('show'), 100);
-        
+
         setTimeout(() => {
             notificacao.classList.remove('show');
             setTimeout(() => notificacao.remove(), 300);
@@ -193,7 +193,7 @@ class Carrinho {
     // Inicializar eventos
     inicializar() {
         this.atualizarContador();
-        
+
         if (window.location.pathname.includes('carrinho.html')) {
             this.renderizar();
             this.configurarPagamento();
@@ -224,12 +224,12 @@ const PRODUTOS = [
     { id: 'pelucia-mudkip', nome: 'Pelúcia Mudkip', preco: 89.90, imagem: '/img/Mudkip Happy.jpeg', descricao: 'Pelúcia super fofa do nosso mascote', categoria: 'pelucias' },
     { id: 'pelucia-squirtle', nome: 'Pelúcia Squirtle', preco: 79.90, imagem: '/img/squirtle de oculos.jpeg', descricao: 'Pelúcia do clássico Squirtle', categoria: 'pelucias' },
     { id: 'pelucia-psyduck', nome: 'Pelúcia Psyduck', preco: 74.90, imagem: '/img/nerd psyduck icon.jpeg', descricao: 'Pelúcia do adorável Psyduck', categoria: 'pelucias' },
-    
+
     // Cards
     { id: 'card-mudkip', nome: 'Card Mudkip Holográfico Equipe Rocket', preco: 2244.90, imagem: '/img/mudkip pokemon card.jpeg', descricao: 'Carta holográfica rara do Mudkip', categoria: 'cards' },
     { id: 'card-colecao', nome: 'Coleção Cards Água', preco: 129.90, imagem: '/img/Fan made Kyogre card.jpeg', descricao: 'Set completo com 20 cartas', categoria: 'cards' },
     { id: 'card-gyarados', nome: 'Card Gyarados EX', preco: 89.90, imagem: '/img/gyarados.jpg', descricao: 'Carta especial do Gyarados', categoria: 'cards' },
-    
+
     // TCG
     { id: 'tcg-kyogre', nome: 'Lata Kyogre', preco: 84.90, imagem: '/img/kyogre.webp', descricao: 'Lata com 36 cartas aleatórias', categoria: 'tcg' },
     { id: 'tcg-deck', nome: 'Deck Box Temático Oceano', preco: 69.90, imagem: '/img/deck box.webp', descricao: 'Deck pré-construído', categoria: 'tcg' },
@@ -243,13 +243,13 @@ const PRODUTOS = [
 function inicializarMenuMobile() {
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.querySelector('.nav-menu');
-    
+
     if (toggle && menu) {
         toggle.addEventListener('click', () => {
             menu.classList.toggle('active');
             toggle.classList.toggle('active');
         });
-        
+
         // Fechar menu ao clicar em um link
         const links = menu.querySelectorAll('.nav-link');
         links.forEach(link => {
@@ -266,13 +266,13 @@ function inicializarMenuMobile() {
 // ============================================
 function inicializarRolagemSuave() {
     document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#') return;
-            
+
             e.preventDefault();
             const target = document.querySelector(href);
-            
+
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
@@ -292,7 +292,7 @@ function inicializarBotaoTopo() {
     botao.innerHTML = '↑';
     botao.setAttribute('aria-label', 'Voltar ao topo');
     document.body.appendChild(botao);
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
             botao.classList.add('show');
@@ -300,7 +300,7 @@ function inicializarBotaoTopo() {
             botao.classList.remove('show');
         }
     });
-    
+
     botao.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
@@ -313,52 +313,66 @@ function inicializarBotaoTopo() {
 // ADICIONAR PRODUTOS AO CARRINHO
 // ============================================
 function inicializarBotoesProdutos() {
-    const botoes = document.querySelectorAll('.btn-primary');
-    
+    const botoes = document.querySelectorAll('.btn-add');
+
     botoes.forEach(botao => {
-        if (botao.textContent.includes('Adicionar ao Carrinho')) {
-            botao.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const card = this.closest('.product-card');
-                const nome = card.querySelector('.product-name').textContent;
-                const precoTexto = card.querySelector('.product-price').textContent;
-                const preco = parseFloat(precoTexto.replace('R$', '').replace(',', '.').trim());
-                const imagem = card.querySelector('.product-image').src;
-                const descricao = card.querySelector('.product-description').textContent;
-                
-                const produto = PRODUTOS.find(p => p.nome === nome) || {
+        botao.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const card = this.closest('.product-card');
+            if (!card) return;
+
+            const nome = card.querySelector('.product-name').textContent.trim();
+            const descricao = card.querySelector('.product-description').textContent.trim();
+
+            const precoTexto = card.querySelector('.product-price').textContent.trim();
+            const preco = parseFloat(
+                precoTexto
+                    .replace('R$', '')
+                    .replace(/\./g, '')
+                    .replace(',', '.')
+            );
+
+            const imagem = card.querySelector('.product-image, .Tcg-image').src;
+
+            let produto = PRODUTOS.find(p => p.nome === nome);
+
+            if (!produto) {
+                produto = {
                     id: `produto-${Date.now()}`,
                     nome,
-                    preco,
+                    descricao,
                     imagem,
-                    descricao
+                    preco
                 };
-                
-                carrinho.adicionar(produto);
-            });
-        }
+            }
+
+            carrinho.adicionar(produto);
+
+            carrinho.mostrarNotificacao(`${nome} foi adicionado ao carrinho!`, 'sucesso');
+        });
     });
 }
+
 
 // ============================================
 // FORMULÁRIO DE CONTATO
 // ============================================
 function inicializarFormularioContato() {
     const form = document.querySelector('.contact-form');
-    
+
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
             const assunto = document.getElementById('assunto').value;
             const mensagem = document.getElementById('mensagem').value;
-            
+
             // Aqui você pode enviar os dados para o servidor
             console.log('Formulário enviado:', { nome, email, assunto, mensagem });
-            
+
             carrinho.mostrarNotificacao('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'sucesso');
             form.reset();
         });
@@ -370,7 +384,7 @@ function inicializarFormularioContato() {
 // ============================================
 function inicializarSistemaPagamento() {
     const resumo = document.querySelector('.summary-card');
-    
+
     if (resumo && !document.querySelector('.payment-options')) {
         const paymentHTML = `
             <div class="payment-options">
@@ -393,10 +407,10 @@ function inicializarSistemaPagamento() {
                 </label>
             </div>
         `;
-        
+
         const summaryTitle = resumo.querySelector('.summary-title');
         summaryTitle.insertAdjacentHTML('afterend', paymentHTML);
-        
+
         carrinho.configurarPagamento();
     }
 }
@@ -406,28 +420,28 @@ function inicializarSistemaPagamento() {
 // ============================================
 function inicializarFinalizarCompra() {
     const botaoFinalizar = document.querySelector('.btn-primary.btn-full');
-    
+
     if (botaoFinalizar && botaoFinalizar.textContent.includes('Finalizar Compra')) {
-        botaoFinalizar.addEventListener('click', function(e) {
+        botaoFinalizar.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             if (carrinho.itens.length === 0) {
                 carrinho.mostrarNotificacao('Seu carrinho está vazio!', 'erro');
                 return;
             }
-            
+
             const formaPagamento = document.querySelector('input[name="pagamento"]:checked')?.value || 'pix';
             const total = carrinho.calcularTotal(formaPagamento);
-            
+
             // Aqui você pode processar o pedido
             console.log('Pedido finalizado:', {
                 itens: carrinho.itens,
                 formaPagamento,
                 total
             });
-            
+
             carrinho.mostrarNotificacao('Pedido realizado com sucesso! Redirecionando...', 'sucesso');
-            
+
             setTimeout(() => {
                 carrinho.limpar();
                 window.location.href = 'index.html';
@@ -441,10 +455,10 @@ function inicializarFinalizarCompra() {
 // ============================================
 let carrinho;
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Inicializar carrinho
     carrinho = new Carrinho();
-    
+
     // Inicializar funcionalidades
     inicializarMenuMobile();
     inicializarRolagemSuave();
@@ -453,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inicializarFormularioContato();
     inicializarSistemaPagamento();
     inicializarFinalizarCompra();
-    
+
     console.log('PokeAqua Store inicializado com sucesso!');
 });
 
